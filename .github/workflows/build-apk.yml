@@ -116,6 +116,15 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
+      - name: Print direct Actions artifact download URL
+        run: |
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo "=================================================================="
+          echo "DIRECT ACTIONS ARTIFACTS PAGE URL:"
+          echo "$RUN_URL"
+          echo "=================================================================="
+          echo "Open the URL above and scroll down to the 'Artifacts' section to download 'app-debug-apk'."
+
       - name: Prepare APK release asset
         id: prepare_asset
         run: |
@@ -197,6 +206,12 @@ jobs:
           RELEASE_TAG="debug-apk-build-${{ github.run_number }}-${{ github.run_attempt }}"
           ASSET_NAME="${{ steps.prepare_asset.outputs.asset_name }}"
           RELEASE_OUTCOME="${{ steps.publish_release.outcome }}"
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          echo "=================================================================="
+          echo "DIRECT ACTIONS ARTIFACTS PAGE URL:"
+          echo "$RUN_URL"
+          echo "=================================================================="
           
           if [ "$RELEASE_OUTCOME" = "success" ]; then
             echo "GitHub Release published successfully!"
@@ -212,25 +227,25 @@ jobs:
             echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "✅ **Debug APK built and published successfully!**" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "- **Release Page:** [View Release]($RELEASE_URL)" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Release Page (Direct APK Download):** [View Release]($RELEASE_URL)" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Actions Run & Artifacts Page:** [View Run & Artifacts]($RUN_URL)" >> "$GITHUB_STEP_SUMMARY"
             echo "- **Release Tag:** \`$RELEASE_TAG\`" >> "$GITHUB_STEP_SUMMARY"
             echo "- **Downloadable APK Asset:** \`$ASSET_NAME\`" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "📱 **How to download on your phone:**" >> "$GITHUB_STEP_SUMMARY"
-            echo "Open the [Release Page]($RELEASE_URL) in your phone's browser, scroll to the **Assets** section, and tap on \`$ASSET_NAME\` to download and install." >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "📦 *Backup Artifact:* The standard GitHub Actions artifact named \`app-debug-apk\` is also stored in the workflow run summary." >> "$GITHUB_STEP_SUMMARY"
+            echo "1. Tap the [Release Page]($RELEASE_URL), scroll to **Assets**, and download \`$ASSET_NAME\`." >> "$GITHUB_STEP_SUMMARY"
+            echo "2. Or open the [Actions Run Page]($RUN_URL) and scroll down to **Artifacts** to download \`app-debug-apk\`." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "::warning::GitHub Release publishing did not succeed or was skipped."
             echo "The debug APK was built successfully and is preserved as an Actions artifact."
             echo "Actions Artifact: app-debug-apk"
+            echo "Actions Run URL: $RUN_URL"
             
-            echo "### ⚠️ Debug APK Build Summary" >> "$GITHUB_STEP_SUMMARY"
+            echo "### 📦 Debug APK Artifact Download" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "✅ **Debug APK built successfully!**" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **Debug APK built and uploaded successfully!**" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "⚠️ *GitHub Release publishing encountered an issue or was skipped, but your APK is preserved.*" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Direct Artifacts Download Link:** [Open Workflow Artifacts Page]($RUN_URL)" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "📦 **Download from Artifacts:**" >> "$GITHUB_STEP_SUMMARY"
-            echo "Download the \`app-debug-apk\` artifact directly from the **Artifacts** section at the bottom of this workflow run page." >> "$GITHUB_STEP_SUMMARY"
+            echo "Scroll to the **Artifacts** section at the bottom of the page above and click **app-debug-apk** to download your APK." >> "$GITHUB_STEP_SUMMARY"
           fi
