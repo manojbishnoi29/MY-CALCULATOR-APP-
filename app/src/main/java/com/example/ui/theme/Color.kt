@@ -2,43 +2,34 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Premium Slate & Electric Cyan/Amber Theme
-val BackgroundDark = Color(0xFF101216)
-val SurfaceDark = Color(0xFF181B22)
-val SurfaceElevatedDark = Color(0xFF222631)
-val SurfaceHighlightDark = Color(0xFF2C3240)
+// Neo-Brutalism High-Voltage Palette
+val BrutalistCanvas = Color(0xFFF7F4EA) // Warm brutalist cream canvas
+val BrutalistBorder = Color(0xFF111111) // Solid stark black ink
+val BrutalistShadow = Color(0xFF111111) // Hard drop shadow
 
-val NumberKeyBackground = Color(0xFF1E222D)
-val NumberKeyText = Color(0xFFF1F5F9)
+// Pop accent blocks
+val BrutalistYellow = Color(0xFFFFE500) // Electric Acid Yellow (Operators)
+val BrutalistCyan = Color(0xFF00E5FF)   // Neon Cyan (Primary/Equals)
+val BrutalistPink = Color(0xFFFF5C93)   // Hot Punch Pink (Clear / Actions)
+val BrutalistGreen = Color(0xFF10B981)  // Neon Lime Green (Success / Indicators)
+val BrutalistPurple = Color(0xFFA78BFA) // Electric Violet (Scientific / Tools)
+val BrutalistOrange = Color(0xFFFF6B00) // Blaze Orange (Equals / Warning)
 
-val ActionKeyBackground = Color(0xFF2A303F)
-val ActionKeyText = Color(0xFF94A3B8)
+// Key surfaces
+val BrutalistKeyNum = Color(0xFFFFFFFF) // Crisp white number cards
+val BrutalistKeyNumText = Color(0xFF111111)
+val BrutalistDisplayCard = Color(0xFFFFFFFF)
 
-val OperatorKeyBackground = Color(0xFF1E3A4B)
-val OperatorKeyText = Color(0xFF38BDF8)
+// Navigation & surfaces
+val BrutalistSurface = Color(0xFFFFFFFF)
+val BrutalistSurfaceVariant = Color(0xFFEDE8D8)
 
-val EqualsKeyBackground = Color(0xFFF59E0B)
-val EqualsKeyText = Color(0xFF18181B)
+val PrimaryText = Color(0xFF111111)
+val SecondaryText = Color(0xFF4B5563)
+val TertiaryText = Color(0xFF9CA3AF)
 
-val ScientificKeyBackground = Color(0xFF1A2634)
-val ScientificKeyText = Color(0xFF818CF8)
-
-val AccentCyan = Color(0xFF00D2B4)
-val AccentAmber = Color(0xFFF59E0B)
-val AccentPurple = Color(0xFF818CF8)
-val AccentRose = Color(0xFFF43F5E)
-
-val PrimaryText = Color(0xFFF8FAFC)
-val SecondaryText = Color(0xFF94A3B8)
-val TertiaryText = Color(0xFF64748B)
-
-// Light Theme fallback
-val BackgroundLight = Color(0xFFF8FAFC)
-val SurfaceLight = Color(0xFFFFFFFF)
-val SurfaceElevatedLight = Color(0xFFF1F5F9)
-val NumberKeyBackgroundLight = Color(0xFFFFFFFF)
-val NumberKeyTextLight = Color(0xFF0F172A)
-val ActionKeyBackgroundLight = Color(0xFFE2E8F0)
-val ActionKeyTextLight = Color(0xFF475569)
-val OperatorKeyBackgroundLight = Color(0xFFE0F2FE)
-val OperatorKeyTextLight = Color(0xFF0284C7)
+// Theme tokens
+val AccentCyan = BrutalistCyan
+val AccentAmber = BrutalistYellow
+val AccentPurple = BrutalistPurple
+val AccentRose = BrutalistPink

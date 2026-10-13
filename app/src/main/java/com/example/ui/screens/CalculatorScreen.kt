@@ -37,6 +37,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun CalculatorScreen(
     viewModel: CalculatorViewModel,
+    onOpenMediaSettings: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val state by viewModel.calculatorState.collectAsState()
@@ -60,6 +61,7 @@ fun CalculatorScreen(
                 onToggleScientific = { viewModel.toggleScientificExpanded() },
                 onToggleRadDeg = { viewModel.toggleRadMode() },
                 onOpenHistory = { isHistoryOpen = true },
+                onOpenMediaSettings = onOpenMediaSettings,
                 onMemoryClear = { viewModel.onMemoryClear() },
                 onMemoryRecall = { viewModel.onMemoryRecall() },
                 onMemoryAdd = { viewModel.onMemoryAdd() },
