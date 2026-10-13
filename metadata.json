@@ -1,0 +1,6 @@
+{
+  "name": "Calculator",
+  "description": "Smart calculator with standard, scientific, unit conversion, and tip & discount calculations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
